@@ -1,0 +1,12 @@
+__pycache__/
+/TEMP/
+/logs/
+
+### test ###
+/start.bat
+/test.py
+/test.wav
+
+### weights ###
+GPT_weights_v2/*.ckpt
+SoVITS_weights_v2/*.pth
