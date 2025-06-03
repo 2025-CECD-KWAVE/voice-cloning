@@ -13,8 +13,6 @@ gpt_path = "GPT_weights_v2/IUv2-e15.ckpt"
 sovits_download_url = "https://drive.google.com/uc?id=1SaIil6qaD7T1XhLinyXAnUvIWliXc5dk"
 gpt_download_url = "https://drive.google.com/uc?id=1ERpGWMwUZFrswyIyHDER36cWxkxIjGwk"
 
-fastlangdetect_path = "GPT_SoVITS/pretrained_models/fast_langdetect/lid.176.bin"
-fastlangdetect_download_url = "https://drive.google.com/uc?id=1R5lfP23Sof1s7idctNTbzX8nOg8kjKfp"
 roberta_path = "GPT_SoVITS/pretrained_models/chinese-roberta-wwm-ext-large/pytorch_model.bin"
 roberta_download_url = "https://drive.google.com/uc?id=1LW4I17dun5ZJwpkYYERVmlqRxeg0foZR"
 hubert_path = "GPT_SoVITS/pretrained_models/chinese-hubert-base/pytorch_model.bin"
@@ -31,7 +29,6 @@ def file_check(path, download_url):
 
 file_check(sovits_path, sovits_download_url)
 file_check(gpt_path, gpt_download_url)
-#file_check(fastlangdetect_path, fastlangdetect_download_url)
 file_check(roberta_path, roberta_download_url)
 file_check(hubert_path, hubert_download_url)
 
@@ -71,5 +68,5 @@ def example():
     return Response(audio, mimetype="audio/wav")
 
 if __name__ == "__main__":
-    app.run(port=4950)
+    app.run(host='0.0.0.0', port=5333)
     
