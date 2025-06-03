@@ -4,8 +4,8 @@ __pycache__/
 
 ### test ###
 /start.bat
-/test.py
-/test.wav
+test*
+/test/
 
 ### weights ###
 GPT_weights_v2/*.ckpt

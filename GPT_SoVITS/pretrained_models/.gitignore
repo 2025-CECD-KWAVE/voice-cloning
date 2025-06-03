@@ -1,2 +1,8 @@
 *
 !.gitignore
+!/chinese-roberta-wwm-ext-large/
+!/chinese-roberta-wwm-ext-large/**
+/chinese-roberta-wwm-ext-large/*.bin
+!/chinese-hubert-base/
+!/chinese-hubert-base/**
+/chinese-hubert-base/*.bin

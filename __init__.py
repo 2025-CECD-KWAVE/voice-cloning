@@ -2,15 +2,41 @@
 from flask import Flask, Response, request
 import logging
 from logging.handlers import RotatingFileHandler
-from voice_cloning import get_tts_wav  
 from io import BytesIO
 import soundfile as sf
-import time
+import os, gdown
 
 app = Flask(__name__)
 
+sovits_path = "SoVITS_weights_v2/IUv2_e8_s216.pth"
+gpt_path = "GPT_weights_v2/IUv2-e15.ckpt"
+sovits_download_url = "https://drive.google.com/uc?id=1SaIil6qaD7T1XhLinyXAnUvIWliXc5dk"
+gpt_download_url = "https://drive.google.com/uc?id=1ERpGWMwUZFrswyIyHDER36cWxkxIjGwk"
+
+fastlangdetect_path = "GPT_SoVITS/pretrained_models/fast_langdetect/lid.176.bin"
+fastlangdetect_download_url = "https://drive.google.com/uc?id=1R5lfP23Sof1s7idctNTbzX8nOg8kjKfp"
+roberta_path = "GPT_SoVITS/pretrained_models/chinese-roberta-wwm-ext-large/pytorch_model.bin"
+roberta_download_url = "https://drive.google.com/uc?id=1LW4I17dun5ZJwpkYYERVmlqRxeg0foZR"
+hubert_path = "GPT_SoVITS/pretrained_models/chinese-hubert-base/pytorch_model.bin"
+hubert_download_url = "https://drive.google.com/uc?id=1pLzRY4DMXeIm36I-FrPnKRx3JPn7ZKp5"
+
 ref_wav_path = "ref_audio/ref_iu1.wav"
 prompt_text = "사실 저는 아주 오랫동안 이 빨간색 가나 밀크를 제일 좋아했어요."
+
+def file_check(path, download_url):
+    if not os.path.exists(path):
+        if not os.path.exists(path.replace(path.split("/")[-1], "")):
+            os.makedirs(path.replace(path.split("/")[-1], ""))
+        gdown.download(download_url, path, quiet=False)
+
+file_check(sovits_path, sovits_download_url)
+file_check(gpt_path, gpt_download_url)
+#file_check(fastlangdetect_path, fastlangdetect_download_url)
+file_check(roberta_path, roberta_download_url)
+file_check(hubert_path, hubert_download_url)
+
+if not os.path.exists("logs/"):
+    os.mkdir("logs/")
 
 file_handler = RotatingFileHandler(
     'logs/server.log', maxBytes=2000, backupCount=10)
@@ -23,6 +49,7 @@ formatter = logging.Formatter(
 )
 file_handler.setFormatter(formatter)
 
+from voice_cloning import get_tts_wav  
 @app.route('/iu', methods=['GET'])
 def example():
     try:
@@ -44,5 +71,5 @@ def example():
     return Response(audio, mimetype="audio/wav")
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=4950)
     
