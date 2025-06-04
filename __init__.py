@@ -46,7 +46,7 @@ formatter = logging.Formatter(
 )
 file_handler.setFormatter(formatter)
 
-from voice_cloning import get_tts_wav  
+from .voice_cloning import get_tts_wav  
 @app.route('/iu', methods=['POST'])
 def example():
     try:
