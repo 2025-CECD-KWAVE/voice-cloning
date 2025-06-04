@@ -47,7 +47,7 @@ formatter = logging.Formatter(
 file_handler.setFormatter(formatter)
 
 from voice_cloning import get_tts_wav  
-@app.route('/iu', methods=['GET'])
+@app.route('/iu', methods=['POST'])
 def example():
     try:
         data = request.get_json()
