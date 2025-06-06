@@ -33,6 +33,7 @@ file_check(sovits_path, sovits_download_url)
 file_check(gpt_path, gpt_download_url)
 file_check(roberta_path, roberta_download_url)
 file_check(hubert_path, hubert_download_url)
+file_check(g2pw_path, g2pw_download_url)
 
 if not os.path.exists("logs/"):
     os.mkdir("logs/")
