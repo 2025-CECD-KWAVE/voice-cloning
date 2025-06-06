@@ -17,6 +17,8 @@ roberta_path = "GPT_SoVITS/pretrained_models/chinese-roberta-wwm-ext-large/pytor
 roberta_download_url = "https://drive.google.com/uc?id=1LW4I17dun5ZJwpkYYERVmlqRxeg0foZR"
 hubert_path = "GPT_SoVITS/pretrained_models/chinese-hubert-base/pytorch_model.bin"
 hubert_download_url = "https://drive.google.com/uc?id=1pLzRY4DMXeIm36I-FrPnKRx3JPn7ZKp5"
+g2pw_path = "GPT_SoVITS/text/G2PWModel/g2pW.onnx"
+g2pw_download_url = "https://drive.google.com/uc?id=1E0XqyzJLG50-QqX4JTkQKhH7zcL8UihU"
 
 ref_wav_path = "ref_audio/ref_iu1.wav"
 prompt_text = "사실 저는 아주 오랫동안 이 빨간색 가나 밀크를 제일 좋아했어요."
